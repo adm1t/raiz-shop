@@ -1,0 +1,79 @@
+@use "../vars" as *;
+@use "sass:map";
+
+@mixin media-hover-device {
+  @media (hover: hover) and (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin media-hover-device-self {
+  @include media-hover-device {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin increase-click-area($size: 4, $type:'before') {
+  @if $type == 'before' {
+    &:before {
+      position: absolute;
+      display: block;
+      content: '';
+      inset: -#{$size}px;
+    }
+  }
+  @if $type == 'after' {
+    &:after {
+      position: absolute;
+      display: block;
+      content: '';
+      inset: -#{$size}px;
+    }
+  }
+}
+
+@mixin reset-ul {
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+  line-height: inherit;
+  list-style-type: none;
+}
+
+@mixin reset-li {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  &:before {
+    content: normal;
+  }
+}
+
+@mixin reset-btn {
+  padding: 0;
+  border: none;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+@mixin media-mobile {
+  @media (max-width: $max-mobile) {
+    @content;
+  }
+}
+
+@mixin container {
+  padding: 0 var(--container-padding, #{$aside-padding});
+
+  @include media-mobile {
+    padding: 0 var(--container-padding, #{$aside-padding-mobile});
+  }
+}
