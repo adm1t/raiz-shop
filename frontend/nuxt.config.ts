@@ -1,5 +1,10 @@
 export default defineNuxtConfig({
-  modules: ['@nuxt/image', '@nuxt/eslint', '@nuxtjs/stylelint-module', '@nuxtjs/stylelint-module'],
+  modules: [
+    '@nuxt/image',
+    '@nuxt/eslint',
+    '@nuxtjs/stylelint-module',
+    'v-gsap-nuxt',
+  ],
   devtools: { enabled: true },
   css: ['~/assets/scss/shared/index.scss', '~/assets/scss/vendors/index.scss'],
   compatibilityDate: '2025-05-15',

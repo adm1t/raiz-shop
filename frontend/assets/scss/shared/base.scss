@@ -16,7 +16,7 @@
 */
 
 html {
-  --header-height: #{$header-h};
+  --header-height: #{$header-height};
   --container-padding: #{$aside-padding};
 
   font-size: .6944vw;
@@ -24,7 +24,7 @@ html {
   scroll-padding-top: calc(var(--header-height) + #{rem(24)});
 
   @include media-mobile {
-    --header-height: #{$header-h-mobile};
+    --header-height: #{$header-height-mobile};
     --container-padding: #{$aside-padding-mobile};
 
     font-size: 2.6666vw;
@@ -35,5 +35,6 @@ body {
   @include typo-h4;
 
   position: relative;
+  background-color: $color-white;
   color: $color-main;
 }

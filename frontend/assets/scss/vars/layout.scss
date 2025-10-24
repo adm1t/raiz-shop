@@ -2,10 +2,5 @@
 
 $aside-padding: rem(32);
 $aside-padding-mobile: rem(8);
-$header-h: rem(80);
-$header-h-mobile: rem(60);
-$header-margin-bottom: rem(20);
-$breadcrumbs-h: rem(18);
-$header-with-breadcrumbs-h: calc($header-h + $header-margin-bottom + $breadcrumbs-h);
-$header-with-breadcrumbs-h-mobile: calc($header-h-mobile + $header-margin-bottom + $breadcrumbs-h);
-$mobile-fixed-nav-h: rem(66);
+$header-height: rem(67);
+$header-height-mobile: rem(56);

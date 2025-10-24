@@ -71,9 +71,6 @@
 }
 
 @mixin container {
-  padding: 0 var(--container-padding, #{$aside-padding});
-
-  @include media-mobile {
-    padding: 0 var(--container-padding, #{$aside-padding-mobile});
-  }
+  padding-right: var(--container-padding, #{$aside-padding});
+  padding-left: var(--container-padding, #{$aside-padding});
 }
