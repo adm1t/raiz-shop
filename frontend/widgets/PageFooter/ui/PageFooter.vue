@@ -1,8 +1,12 @@
+<script setup lang="ts">
+const currentYear = new Date().getFullYear()
+</script>
+
 <template>
   <footer class="page-footer">
     <div class="page-footer__wrapper">
       <div class="page-footer__copyright">
-        @2025 райз шоп
+        @{{ currentYear }} райз шоп
       </div>
       <nav class="page-footer__nav page-footer__nav--social">
         <ul class="page-footer__nav-ul">
