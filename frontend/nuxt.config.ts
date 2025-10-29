@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/stylelint-module',
     'v-gsap-nuxt',
+    'nuxt-icons',
   ],
   devtools: { enabled: true },
   css: ['~/assets/scss/shared/index.scss', '~/assets/scss/vendors/index.scss'],
