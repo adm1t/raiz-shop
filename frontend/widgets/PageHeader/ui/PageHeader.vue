@@ -1,17 +1,29 @@
 <script setup lang="ts">
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import PageHeaderMobileMenu from './PageHeaderMobileMenu.vue'
+import { useScreen } from '~/shared/composables'
 
 const route = useRoute()
+const { isDesktop } = useScreen()
 
 const headerElement = useTemplateRef('headerElement')
 
 const isScrolled = ref(false)
+const isMenuVisible = ref(false)
+
+const isScrollLockedState = useState<boolean>('isScrollLocked', () => isMenuVisible.value)
 
 const headerModifier = computed(() => {
+  if (isMenuVisible.value) return 'menu-visible'
   if (isScrolled.value) return 'scrolled'
   if (route.name === 'index') return 'transparent'
   return 'default'
 })
+
+const onMenuButtonClick = () => {
+  isMenuVisible.value = !isMenuVisible.value
+  isScrollLockedState.value = isMenuVisible.value
+}
 
 onMounted(() => {
   ScrollTrigger.create({
@@ -24,6 +36,13 @@ onMounted(() => {
     },
   })
 })
+
+watch(isDesktop, (newValue) => {
+  if (newValue && isMenuVisible.value) {
+    isMenuVisible.value = false
+    isScrollLockedState.value = false
+  }
+})
 </script>
 
 <template>
@@ -33,6 +52,15 @@ onMounted(() => {
     :class="`page-header--${headerModifier}`"
   >
     <div class="page-header__wrapper">
+      <button
+        class="page-header__menu-btn"
+        @click="onMenuButtonClick"
+      >
+        <NuxtIcon
+          class="page-header__menu-btn-icon"
+          name="burger"
+        />
+      </button>
       <div class="page-header__logo">
         <NuxtLink
           class="page-header__logo-link"
@@ -79,17 +107,34 @@ onMounted(() => {
               избранное
             </NuxtLink>
           </li>
-          <li class="page-header__nav-li page-header__nav-li--cart">
-            <NuxtLink
-              class="page-header__nav-link"
-              to="/cart"
+          <GSAPTransition
+            :duration="0.4"
+          >
+            <li
+              v-if="!isMenuVisible"
+              class="page-header__nav-li page-header__nav-li--cart page-header__nav-li--cart-filled"
             >
-              корзина
-            </NuxtLink>
-          </li>
+              <NuxtLink
+                class="page-header__nav-link"
+                to="/cart"
+              >
+                корзина
+              </NuxtLink>
+            </li>
+          </GSAPTransition>
         </ul>
       </nav>
     </div>
+    <GSAPTransition
+      :duration="0.4"
+    >
+      <div
+        v-if="isMenuVisible"
+        class="page-header__menu"
+      >
+        <PageHeaderMobileMenu />
+      </div>
+    </GSAPTransition>
   </header>
 </template>
 
@@ -97,21 +142,15 @@ onMounted(() => {
   .page-header {
     $b: &;
 
-    @include container;
-
-    padding-top: rem(24);
-    padding-bottom: rem(24);
+    display: flex;
+    flex-direction: column;
     background-color: var(--header-background-color, transparent);
     color: var(--header-color, #{$color-white});
     transition: color $default-transition, background-color $default-transition;
 
-    @include media-mobile {
-      padding-top: rem(16);
-      padding-bottom: rem(16);
-    }
-
     &--default,
-    &--scrolled {
+    &--scrolled,
+    &--menu-visible {
       --header-background-color: #{$color-white};
       --header-color: #{$color-main};
     }
@@ -121,10 +160,24 @@ onMounted(() => {
       --header-color: #{$color-white};
     }
 
+    &--menu-visible {
+      height: 100dvh;
+    }
+
     &__wrapper {
+      @include container;
+
       display: flex;
       align-items: center;
+      padding-top: rem(24);
+      padding-bottom: rem(24);
       column-gap: rem(8);
+
+      @include media-mobile {
+        padding-top: rem(16);
+        padding-bottom: rem(16);
+        column-gap: rem(12);
+      }
     }
 
     &__logo {
@@ -160,11 +213,44 @@ onMounted(() => {
         }
 
         &--cart {
+          display: flex;
+          align-items: start;
+          padding-right: rem(8);
+
           @include media-mobile {
             @include typo-h3;
           }
+
+          &-filled {
+            &:after {
+              display: block;
+              width: rem(8);
+              height: rem(8);
+              border-radius: 50%;
+              background-color: $color-red;
+              content: '';
+            }
+          }
         }
       }
+    }
+
+    &__menu-btn {
+      display: none;
+
+      @include media-mobile {
+        display: block;
+      }
+
+      &-icon {
+        display: flex;
+        font-size: rem(24);
+      }
+    }
+
+    &__menu {
+      height: calc(100dvh - var(--header-height));
+      flex-grow: 1;
     }
   }
 </style>

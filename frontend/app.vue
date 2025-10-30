@@ -5,6 +5,9 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { PageHeader } from '~/widgets/PageHeader'
 import { PageFooter } from '~/widgets/PageFooter'
 
+useState('currentYear', () => new Date().getFullYear())
+const isScrollLocked = useState<boolean>('isScrollLocked')
+
 onBeforeMount(() => {
   useGSAP().registerPlugin(ScrollSmoother, ScrollTrigger)
 
@@ -12,6 +15,15 @@ onBeforeMount(() => {
     smooth: 1,
     effects: true,
   })
+})
+
+watch(isScrollLocked, (newValue) => {
+  if (newValue) {
+    document.documentElement.classList.add('scroll-locked')
+  }
+  else {
+    document.documentElement.classList.remove('scroll-locked')
+  }
 })
 </script>
 

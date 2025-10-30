@@ -29,6 +29,11 @@ html {
 
     font-size: 2.6666vw;
   }
+
+  &.scroll-locked {
+    overflow: hidden;
+    scrollbar-gutter: stable;
+  }
 }
 
 body {
