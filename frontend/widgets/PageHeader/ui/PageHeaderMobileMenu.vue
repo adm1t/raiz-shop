@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const year = useState('currentYear')
 </script>
 
 <template>
@@ -116,7 +117,7 @@
         </ul>
       </nav>
       <div class="page-header-mobile-menu__copyright">
-        @{{ useState('currentYear') }} райз шоп
+        @{{ year }} райз шоп
       </div>
     </div>
   </div>

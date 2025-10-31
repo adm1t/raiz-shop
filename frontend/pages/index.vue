@@ -1,10 +1,12 @@
+<script setup lang="ts">
+import { IndexHero } from '~/widgets/IndexHero'
+</script>
+
 <template>
   <div class="index-page">
-    <NuxtImg
-      src="/tmp/hero.webp"
-      alt=""
-      class="index-page__hero"
-    />
+    <div class="index-page__hero">
+      <IndexHero />
+    </div>
     <div class="index-page__container">
       <div class="index-page__icons">
         <NuxtIcon
@@ -38,8 +40,6 @@
     }
 
     &__hero {
-      width: 100%;
-      height: auto;
       margin-top: calc(-1 * var(--header-height));
     }
 

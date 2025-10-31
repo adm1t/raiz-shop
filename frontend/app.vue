@@ -1,19 +1,25 @@
 <script setup lang="ts">
-import ScrollSmoother from 'gsap/ScrollSmoother'
-import ScrollTrigger from 'gsap/ScrollTrigger'
-
+import { useResizeObserver } from '@vueuse/core'
 import { PageHeader } from '~/widgets/PageHeader'
 import { PageFooter } from '~/widgets/PageFooter'
 
 useState('currentYear', () => new Date().getFullYear())
 const isScrollLocked = useState<boolean>('isScrollLocked')
 
-onBeforeMount(() => {
-  useGSAP().registerPlugin(ScrollSmoother, ScrollTrigger)
+const contentElement = useTemplateRef('contentElement')
 
-  ScrollSmoother.create({
+useResizeObserver(contentElement, () => useNuxtApp().callHook('content:resize'))
+
+const smoother = ref()
+const { $ScrollSmoother, $ScrollTrigger } = useNuxtApp()
+
+onMounted(() => {
+  smoother.value = $ScrollSmoother.create({
     smooth: 1,
-    effects: true,
+  })
+
+  useNuxtApp().hook('content:resize', () => {
+    $ScrollTrigger.refresh()
   })
 })
 
@@ -38,6 +44,7 @@ watch(isScrollLocked, (newValue) => {
     >
       <div
         id="smooth-content"
+        ref="contentElement"
         class="app__content"
       >
         <NuxtRouteAnnouncer />

@@ -70,6 +70,12 @@
   }
 }
 
+@mixin media-desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
 @mixin container {
   padding-right: var(--container-padding, #{$aside-padding});
   padding-left: var(--container-padding, #{$aside-padding});

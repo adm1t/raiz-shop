@@ -1,11 +1,12 @@
 <script setup lang="ts">
+const year = useState('currentYear')
 </script>
 
 <template>
   <footer class="page-footer">
     <div class="page-footer__wrapper">
       <div class="page-footer__copyright">
-        @{{ useState('currentYear') }} райз шоп
+        @{{ year }} райз шоп
       </div>
       <nav class="page-footer__nav page-footer__nav--social">
         <ul class="page-footer__nav-ul">

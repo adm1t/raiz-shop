@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import ScrollTrigger from 'gsap/ScrollTrigger'
 import PageHeaderMobileMenu from './PageHeaderMobileMenu.vue'
 import { useScreen } from '~/shared/composables'
 
 const route = useRoute()
 const { isDesktop } = useScreen()
+
+const { $ScrollTrigger } = useNuxtApp()
 
 const headerElement = useTemplateRef('headerElement')
 
@@ -26,8 +27,8 @@ const onMenuButtonClick = () => {
 }
 
 onMounted(() => {
-  ScrollTrigger.create({
-    start: `top -${headerElement.value?.clientHeight ?? 0 / 2}`,
+  $ScrollTrigger.create({
+    start: `top -${headerElement.value?.clientHeight ?? 0}`,
     onEnter: () => {
       isScrolled.value = true
     },
@@ -107,9 +108,7 @@ watch(isDesktop, (newValue) => {
               избранное
             </NuxtLink>
           </li>
-          <GSAPTransition
-            :duration="0.4"
-          >
+          <Transition name="fade">
             <li
               v-if="!isMenuVisible"
               class="page-header__nav-li page-header__nav-li--cart page-header__nav-li--cart-filled"
@@ -121,20 +120,18 @@ watch(isDesktop, (newValue) => {
                 корзина
               </NuxtLink>
             </li>
-          </GSAPTransition>
+          </Transition>
         </ul>
       </nav>
     </div>
-    <GSAPTransition
-      :duration="0.4"
-    >
+    <Transition name="fade">
       <div
         v-if="isMenuVisible"
         class="page-header__menu"
       >
         <PageHeaderMobileMenu />
       </div>
-    </GSAPTransition>
+    </Transition>
   </header>
 </template>
 
@@ -156,8 +153,15 @@ watch(isDesktop, (newValue) => {
     }
 
     &--transparent {
-      --header-background-color: transparent;
-      --header-color: #{$color-white};
+      @include media-desktop {
+        --header-background-color: transparent;
+        --header-color: #{$color-white};
+      }
+
+      @include media-mobile {
+        --header-background-color: #{$color-white};
+        --header-color: #{$color-main};
+      }
     }
 
     &--menu-visible {

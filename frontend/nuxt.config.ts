@@ -3,7 +3,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/eslint',
     '@nuxtjs/stylelint-module',
-    'v-gsap-nuxt',
     'nuxt-icons',
   ],
   devtools: { enabled: true },

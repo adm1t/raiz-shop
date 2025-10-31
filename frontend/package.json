@@ -18,10 +18,11 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.10.0",
+    "@vueuse/core": "^14.0.0",
     "eslint": "^9.38.0",
+    "gsap": "^3.13.0",
     "nuxt": "^4.2.0",
     "nuxt-icons": "4.0.0",
-    "v-gsap-nuxt": "1.4.4",
     "vue": "^3.5.14",
     "vue-router": "^4.5.1"
   },
