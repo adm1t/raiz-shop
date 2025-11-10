@@ -1,0 +1,1 @@
+const v='<svg viewBox="0 0 24 24"><path d="M2.2 17.3h19.5v1.5H2.2zM2.2 11.3h19.5v1.5H2.2zM2.2 5.3h19.5v1.5H2.2z"/></svg>';export{v as default};
