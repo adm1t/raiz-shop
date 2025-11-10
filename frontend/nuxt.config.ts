@@ -5,9 +5,16 @@ export default defineNuxtConfig({
     '@nuxtjs/stylelint-module',
     'nuxt-icons',
   ],
+  ssr: false,
   devtools: { enabled: true },
+  app: {
+    baseURL: '/raiz-shop/',
+  },
   css: ['~/assets/scss/shared/index.scss', '~/assets/scss/vendors/index.scss'],
   compatibilityDate: '2025-05-15',
+  nitro: {
+    preset: 'github-pages',
+  },
   vite: {
     css: {
       preprocessorOptions: {
