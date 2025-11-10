@@ -28,7 +28,7 @@ const onMenuButtonClick = () => {
 
 onMounted(() => {
   $ScrollTrigger.create({
-    start: `top -${headerElement.value?.clientHeight ?? 0}`,
+    start: () => `top -${headerElement.value?.clientHeight ?? 0}`,
     onEnter: () => {
       isScrolled.value = true
     },

@@ -47,6 +47,14 @@
   text-transform: lowercase;
 }
 
+@mixin typo-main {
+  font-family: $font-family;
+  font-size: rem(14);
+  font-style: normal;
+  font-weight: 400;
+  line-height: rem(20);
+}
+
 @mixin typo-promo {
   font-family: $font-family;
   font-size: rem(32);

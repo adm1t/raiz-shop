@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VButton } from '~/shared/ui/Button'
+import { BREAKPOINT_DESKTOP_MIN } from '~/shared/variables'
 
 const SCROLLTRIGGER_ID = 'index-hero-st'
 
@@ -14,24 +15,28 @@ const scrollProgress = reactive({
   value: 0,
 })
 
-onMounted(async () => {
-  $gsap.to(scrollProgress, {
-    value: 1,
-    scrollTrigger: {
-      id: SCROLLTRIGGER_ID,
-      trigger: rootElement.value,
-      pin: wrapperElement.value,
-      pinType: 'transform',
-      start: 'top top',
-      end: '+=500',
-      scrub: true,
-      onEnter: () => {
-        isScrolled.value = true
+onMounted(() => {
+  const mm = $gsap.matchMedia()
+
+  mm.add(`(min-width: ${BREAKPOINT_DESKTOP_MIN}px)`, () => {
+    $gsap.to(scrollProgress, {
+      value: 1,
+      scrollTrigger: {
+        id: SCROLLTRIGGER_ID,
+        trigger: rootElement.value,
+        pin: wrapperElement.value,
+        pinType: 'transform',
+        start: 'top top',
+        end: '+=500',
+        scrub: true,
+        onEnter: () => {
+          isScrolled.value = true
+        },
+        onLeaveBack: () => {
+          isScrolled.value = false
+        },
       },
-      onLeaveBack: () => {
-        isScrolled.value = false
-      },
-    },
+    })
   })
 })
 

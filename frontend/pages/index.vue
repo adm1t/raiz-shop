@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { PromoText } from '~/shared/ui/PromoText/'
 import { IndexHero } from '~/widgets/IndexHero'
+import { IndexCatalogSection } from '~/widgets/IndexCatalog'
 </script>
 
 <template>
@@ -7,55 +9,62 @@ import { IndexHero } from '~/widgets/IndexHero'
     <div class="index-page__hero">
       <IndexHero />
     </div>
-    <div class="index-page__container">
-      <div class="index-page__icons">
-        <NuxtIcon
-          name="heart"
-          class="index-page__icon"
-          filled
+    <div class="index-page__content">
+      <section class="index-page__promo">
+        <PromoText text="создаём одежду, которую хочется носить каждый день — легко и с удовольствием. Наша новая коллекция предлагает вещи, которые вписываются в любой стиль жизни." />
+      </section>
+      <section class="index-page__catalog-section">
+        <IndexCatalogSection
+          :sidebar="{
+            title: 'новое.',
+            description: 'не просто коллекция — а новое искусство, настоящий тренд и запах модной одежды. без рассказов о природе. только самое богатство.',
+            linkText: 'смотреть коллекцию',
+            linkHref: '/',
+          }"
         />
-        <NuxtIcon
-          name="arrow-left"
-          class="index-page__icon"
+      </section>
+      <section class="index-page__catalog-section">
+        <IndexCatalogSection
+          :sidebar="{
+            title: 'Футболки.',
+            description: 'не просто коллекция — а новое искусство, настоящий тренд и запах модной одежды. без рассказов о природе. только самое богатство.',
+            linkText: 'смотреть коллекцию',
+            linkHref: '/',
+          }"
+          has-banner
         />
-        <NuxtIcon
-          name="eye"
-          class="index-page__icon"
-        />
-      </div>
-      <h1 class="index-page__title">
-        <br>
-        Далеко-далеко за словесными горами в стране гласных и согласных живут, рыбные тексты. От всех ему все, о снова грамматики обеспечивает даже жаренные возвращайся на берегу мир текста океана сбить подпоясал первую образ рыбными свой подзаголовок толку его курсивных рыбного послушавшись безорфографичный свою? Семантика дорогу большой, единственное рукописи переулка деревни снова напоивший безопасную образ щеке. Родного, скатился! Дал власти единственное продолжил, послушавшись дороге своего безорфографичный однажды моей семантика последний строчка которое рот дорогу подзаголовок напоивший океана даже безопасную, повстречался речью назад. Имеет, заглавных ведущими злых подпоясал своих вопрос но жаренные жизни выйти безопасную маленький осталось продолжил ее свое она до города. Ipsum предупреждал но имени обеспечивает, оксмокс, большой вопроса журчит над домах он рот щеке подзаголовок точках о прямо вдали до буквенных? Прямо проектах свой необходимыми продолжил подзаголовок, грамматики не меня снова всеми, страна она речью ему что единственное семантика текст! Там рыбными грустный домах заманивший? Решила, меня дорогу эта грамматики буквенных диких силуэт последний себя, предупредила переписали жизни пустился свой, заголовок большого текстами он речью. Заманивший свой заголовок несколько курсивных необходимыми он жизни даль текстами лучше коварных, рыбного по всей они которое буквенных власти пустился маленькая знаках возвращайся щеке повстречался даже текстов рукопись реторический приставка. На берегу предложения прямо вскоре! Которое вопроса агентство свой собрал переулка.
-        <br>
-        <br>
-      </h1>
+      </section>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
   .index-page {
-    &__container {
-      @include container;
-    }
-
     &__hero {
       margin-top: calc(-1 * var(--header-height));
     }
 
-    &__icons {
+    &__content {
+      @include container;
+
       display: flex;
-      margin-top: rem(32);
-      gap: rem(24);
+      flex-direction: column;
+      padding-top: rem(32);
+      padding-bottom: rem(48);
+      row-gap: rem(72);
+
+      @include media-mobile {
+        padding-top: rem(48);
+        row-gap: rem(48);
+      }
     }
 
-    &__icon {
-      color: $color-red;
-      font-size: rem(32);
-    }
+    &__promo {
+      padding: rem(80) rem(231) rem(80) rem(462);
 
-    &__title {
-      @include typo-h1;
+      @include media-mobile {
+        padding: 0;
+      }
     }
   }
 </style>

@@ -8,6 +8,7 @@ export default withNuxt(
   {
     rules: {
       'linebreak-style': ['error', 'unix'],
+      'vue/no-v-html': 'off',
     },
   },
   {
