@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BREAKPOINT_DESKTOP_MIN } from '~/shared/variables'
+import { BREAKPOINT_DESKTOP_MIN } from '~/common/variables'
 import type { IndexCatalogSidebarProps } from '../types'
 import IndexCatalogSidebar from './IndexCatalogSidebar.vue'
 import { ProductCard } from '~/widgets/ProductCard'
@@ -52,14 +52,14 @@ onUnmounted(() => {
         class="index-catalog-section__banner"
       >
         <CatalogBanner
-          src="/tmp/banner.webp"
+          src="/images/banner.webp"
           button-href="/"
           button-text="смотреть коллекцию"
         />
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -67,7 +67,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-02.webp', '/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-02.webp', '/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -75,7 +75,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-03.webp', '/tmp/product-02.webp', '/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-03.webp', '/images/product-02.webp', '/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -83,7 +83,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-02.webp', '/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-02.webp', '/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -91,7 +91,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-03.webp', '/tmp/product-02.webp', '/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-03.webp', '/images/product-02.webp', '/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -99,7 +99,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -107,7 +107,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-02.webp', '/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-02.webp', '/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"
@@ -115,7 +115,7 @@ onUnmounted(() => {
       </div>
       <div class="index-catalog-section__grid-item">
         <ProductCard
-          :images="['/tmp/product-03.webp', '/tmp/product-02.webp', '/tmp/product-01.webp', '/tmp/product-02.webp', '/tmp/product-03.webp']"
+          :images="['/images/product-03.webp', '/images/product-02.webp', '/images/product-01.webp', '/images/product-02.webp', '/images/product-03.webp']"
           name="штаны 010"
           :price="33000"
           link="/"

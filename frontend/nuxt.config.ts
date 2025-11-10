@@ -6,8 +6,19 @@ export default defineNuxtConfig({
     'nuxt-icons',
   ],
   devtools: { enabled: true },
+  app: {
+    baseURL: process.env.NUXT_APP_BASE_URL || '/',
+  },
   css: ['~/assets/scss/shared/index.scss', '~/assets/scss/vendors/index.scss'],
+  runtimeConfig: {
+    public: {
+      baseURL: process.env.NUXT_APP_BASE_URL || '/',
+    },
+  },
   compatibilityDate: '2025-05-15',
+  nitro: {
+    preset: 'github-pages',
+  },
   vite: {
     css: {
       preprocessorOptions: {

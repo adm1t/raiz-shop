@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import PageHeaderMobileMenu from './PageHeaderMobileMenu.vue'
-import { useScreen } from '~/shared/composables'
+import { useScreen } from '~/common/composables'
 
 const route = useRoute()
 const { isDesktop } = useScreen()

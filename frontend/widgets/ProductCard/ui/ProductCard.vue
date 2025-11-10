@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { getFormattedPrice, getFullImageUrl } from '~/common/utils'
+
 const props = defineProps<{
   images: string[]
   name: string
@@ -11,7 +13,7 @@ const router = useRouter()
 const activeImageIndex = ref(0)
 
 const imagesCount = computed(() => props.images.length)
-const activeImage = computed(() => props.images[activeImageIndex.value])
+const activeImage = computed(() => getFullImageUrl(props.images[activeImageIndex.value] ?? ''))
 
 const formattedPrice = computed(() => getFormattedPrice(props.price))
 </script>
@@ -22,11 +24,12 @@ const formattedPrice = computed(() => getFormattedPrice(props.price))
     @click="router.push(link)"
   >
     <div class="product-card__preview">
-      <NuxtImg
+      <img
+        v-if="activeImage"
         class="product-card__image"
         :src="activeImage"
         alt=""
-      />
+      >
       <div
         v-if="imagesCount > 1"
         class="product-card__hover"

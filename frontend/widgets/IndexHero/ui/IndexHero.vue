@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { VButton } from '~/shared/ui/Button'
-import { BREAKPOINT_DESKTOP_MIN } from '~/shared/variables'
+import { VButton } from '~/common/ui/Button'
+import { BREAKPOINT_DESKTOP_MIN } from '~/common/variables'
 
 const SCROLLTRIGGER_ID = 'index-hero-st'
 
@@ -57,12 +57,12 @@ onBeforeUnmount(() => {
       ref="wrapperElement"
       class="index-hero__wrapper"
     >
-      <NuxtImg
-        src="/tmp/hero.webp"
+      <img
+        src="/images/hero.webp"
         alt=""
         class="index-hero__image"
         :style="`--scroll-progress: ${scrollProgress.value}`"
-      />
+      >
       <VButton
         class="index-hero__button"
         to="/"

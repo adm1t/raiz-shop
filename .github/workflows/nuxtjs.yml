@@ -1,0 +1,37 @@
+name: Deploy Nuxt Frontend to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./frontend
+
+      - name: Build project
+        run: yarn generate
+        working-directory: ./frontend
+        env:
+          NUXT_APP_BASE_URL: '/raiz-shop/'
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          branch: gh-pages
+          folder: frontend/dist
+          token: ${{ secrets.GITHUB_TOKEN }}

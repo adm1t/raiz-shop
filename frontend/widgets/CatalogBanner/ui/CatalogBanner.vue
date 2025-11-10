@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { VButton } from '~/shared/ui/Button'
+import { VButton } from '~/common/ui/Button'
+import { getFullImageUrl } from '~/common/utils'
 
 defineProps<{
   src: string
@@ -10,10 +11,10 @@ defineProps<{
 
 <template>
   <div class="catalog-banner">
-    <NuxtImg
+    <img
       class="catalog-banner__image"
-      :src="src"
-    />
+      :src="getFullImageUrl(src)"
+    >
     <VButton
       v-if="buttonText && buttonHref"
       class="catalog-banner__button"

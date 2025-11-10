@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PromoText } from '~/shared/ui/PromoText/'
+import { PromoText } from '~/common/ui/PromoText'
 import { IndexHero } from '~/widgets/IndexHero'
 import { IndexCatalogSection } from '~/widgets/IndexCatalog'
 </script>
